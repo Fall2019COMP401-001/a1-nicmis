@@ -28,12 +28,22 @@ Scanner key = new Scanner(System.in);
 			String firstName = key.next();
 			String lastName = key.next();
 			int numberOfItemsBought = key.nextInt();
-
-			for(int n = 1; n <= numberOfItemsBought; n++) {
+			String[] itemsBought = new String[numberOfItemsBought];
+			
+			for(int n = 0; n < numberOfItemsBought; n++) {
 				int quantity = key.nextInt();
-				String item = key.next();
-				itemCustomerCounts[Arrays.asList(items).indexOf(item)]+= 1;
-				itemCounts[Arrays.asList(items).indexOf(item)] += quantity;
+				itemsBought[n] = key.next();
+				
+				int counter = 0;
+				for(int s = 0; s < numberOfItemsBought; s++) {
+					if(itemsBought[n].equalsIgnoreCase(itemsBought[s]))
+						counter++;
+				}	
+				
+				if(counter == 1)
+					itemCustomerCounts[Arrays.asList(items).indexOf(itemsBought[n])]+= 1;
+
+				itemCounts[Arrays.asList(items).indexOf(itemsBought[n])] += quantity;
 			}
 			
 		}
